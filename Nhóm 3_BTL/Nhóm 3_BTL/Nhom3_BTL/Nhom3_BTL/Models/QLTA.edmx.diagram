@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50db7febd7924883b5f0cb78393dd873" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTiengAnhModel.Admin" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.Answer" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.Courses" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.Enrollment" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.Grade" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.Lesson" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.question" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.test" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTiengAnhModel.user" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Answer_question" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Answer_user" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Enrollment_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Lesson_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_test_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Enrollment_user" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Grade_test" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_Grade_user" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTiengAnhModel.FK_question_test" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

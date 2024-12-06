@@ -1,0 +1,685 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+:root {
+    --header-height: 3rem;
+    --nav-width: 80px;
+    --first-color: #4723D9;
+    --first-color-light: #AFA5D9;
+    --white-color: #F7F6FB;
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    --z-fixed: 100
+}
+
+*, ::before, ::after {
+    box-sizing: border-box
+}
+
+body {
+    position: relative;
+    margin: var(--header-height) 0 0 0;
+    padding: 0 0rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s
+}
+
+a {
+    text-decoration: none
+}
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: var(--white-color);
+    z-index: var(--z-fixed);
+    transition: .5s
+}
+
+.header_toggle {
+    color: var(--first-color);
+    font-size: 1.5rem;
+    cursor: pointer
+}
+
+.header_img {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden
+}
+
+    .header_img img {
+        width: 40px
+    }
+
+.l-navbar {
+    display: flex;
+    margin-top: 62px !important;
+    background-color: #ffff;
+    border: rgb(235, 237, 245) 2px solid;
+    position: fixed;
+    top: 0;
+    left: -30%;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--first-color);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed)
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-left: 0px !important;
+}
+
+.nav_logo, .nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 .5rem 1.5rem
+}
+
+.nav_logo {
+    margin-bottom: 2rem
+}
+
+.nav_logo-icon {
+    font-size: 1.25rem;
+    color: var(--white-color)
+}
+
+.nav_logo-name {
+    color: rgb(120, 128, 138);
+    font-weight: 700
+}
+
+.nav_link {
+    position: relative;
+    color: rgb(120, 128, 138);
+    margin-bottom: 1.5rem;
+    transition: .3s
+}
+
+    .nav_link:hover {
+        color: rgb(22, 125, 250) !important;
+        background-color: rgb(235, 245, 255);
+        border-radius: 20px;
+    }
+
+.nav_icon {
+    font-size: 1.25rem
+}
+
+.show {
+    left: 0;
+}
+
+.body-pd {
+    padding-left: calc(var(--nav-width) + 0rem)
+}
+
+.active {
+    color: rgb(22, 125, 250);
+    background-color: rgb(235, 245, 255);
+    border-radius: 20px;
+    margin-left: 5px;
+}
+
+    .active::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 2px;
+        height: 32px;
+        background-color: rgb(235, 245, 255);
+    }
+
+.height-100 {
+    background-image: url('/img/bg-light.png'); /* Đường dẫn đến ảnh */
+    height: 150vh;
+}
+
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 0.1rem)
+    }
+
+    .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+    }
+
+    .header_img {
+        width: 40px;
+        height: 40px
+    }
+
+        .header_img img {
+            width: 45px
+        }
+
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0
+    }
+
+    .show {
+        width: calc(var(--nav-width) + 156px)
+    }
+
+    .body-pd {
+        padding-left: calc(var(--nav-width) + 158px)
+    }
+}
+
+.l-navbar {
+    margin-top: 62px !important;
+    background-color: #ffff;
+    border: rgb(235, 237, 245) 2px solid;
+}
+
+.header {
+    background-color: rgb(255, 255, 255) !important;
+    border: rgb(235, 237, 245) 2px solid;
+    padding-left: 15px !important;
+}
+
+.bx-menu {
+    color: black;
+    font-size: 40px;
+}
+
+.nav_link {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+    .nav_link:hover {
+        background-color: rgb(235, 245, 255);
+        color: #4723D9;
+    }
+
+.bt-out {
+    margin-left: 10px;
+    display: flex;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-left: 0px;
+    background-color: rgb(242, 243, 245);
+}
+
+    .bt-out a {
+        padding: 0px !important;
+        margin-left: 15px;
+        margin-bottom: 0px !important;
+    }
+
+.height-100 {
+    padding-right: 30px;
+    padding-left: 60px;
+    padding-top: 20px;
+}
+
+.acc-title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: rgb(223, 223, 223) 1px solid;
+}
+
+.ava {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+    .ava img {
+        width: 60px;
+    }
+
+.profile h4 {
+    font-weight: 900;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+    border-bottom: none !important;
+}
+
+h4 {
+    margin-top: 15px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.card-text {
+    width: 760px;
+    border-radius: 15px;
+    border: rgb(228, 228, 228) 1px solid;
+    display: flex;
+    align-items: center;
+    height: 98px;
+}
+
+    .card-text .anh img {
+        padding-left: 15px;
+        width: 70px;
+        padding-right: 15px;
+    }
+
+    .card-text .info h4 {
+        padding-bottom: 0px;
+        margin-bottom: 5px;
+        border-bottom: none !important;
+    }
+
+    .card-text .info h6 {
+        font-size: 12px;
+        padding-bottom: 0px;
+        margin-bottom: 5px;
+        border-bottom: none !important;
+        display: flex;
+        align-items: center;
+    }
+
+        .card-text .info h6 svg {
+            margin-left: 25px;
+            width: 15px;
+        }
+
+.next {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 444px;
+    align-items: flex-end;
+}
+
+    .next a {
+        margin-top: 10px;
+        font-size: 15px;
+        color: rgb(0, 176, 91);
+        font-weight: 700;
+    }
+
+.container-learn {
+    display: flex;
+}
+
+.con-learn_2 {
+    margin-left: 75px;
+    border: rgb(228, 228, 228) 1px solid;
+    border-radius: 15px;
+    margin-top: 50px;
+    background-color: rgb(247, 249, 250);
+    height: 130px;
+}
+
+.card_tt {
+    padding: 20px;
+}
+
+    .card_tt h4 {
+        margin-top: 0px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        border-bottom: none !important;
+    }
+
+.khuon2 {
+    display: flex;
+}
+
+.scroll img {
+    width: 70px;
+}
+
+.card-tientrinh {
+    height: 225px;
+    width: 690px;
+    margin-left: 10px;
+    border: rgb(152, 152, 152) 1px solid;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card-tren {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: rgb(213, 213, 213) 1px solid;
+}
+
+    .card-tren .text-qt h6 {
+        color: rgb(114, 128, 148);
+    }
+
+    .card-tren .text-qt h4 {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        padding-bottom: 0px;
+    }
+
+.btn-next {
+    background-color: rgb(0, 112, 250);
+    padding: 10px;
+    border-radius: 18px;
+}
+
+    .btn-next a {
+        color: #F7F6FB;
+        font-weight: 600;
+    }
+
+.card-duoi {
+    padding: 10px;
+}
+
+.tt-tren {
+    padding-top: 15px;
+    display: flex;
+}
+
+    .tt-tren svg {
+        width: 40px;
+    }
+
+    .tt-tren h6 {
+        color: black;
+        font-weight: 600;
+    }
+
+.muctieu {
+    display: flex;
+}
+
+.baihoc {
+    margin-left: 50px;
+    display: flex;
+}
+
+.tt-duoi {
+    margin-top: 10px;
+}
+
+.khoahoc-title {
+    width: 770px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.xem-all a {
+    color: black;
+}
+
+.card-khoa {
+    display: flex;
+    justify-content: center;
+}
+
+.card-khoahoc {
+    margin-left: 15px;
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    border: rgb(152, 152, 152) 1px solid;
+}
+
+.anh-khoahoc1 img {
+    width: 250px;
+    border-radius: 15px;
+}
+
+.card-khoahoc1-title h4 {
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+.trangthai {
+    display: flex;
+}
+
+    .trangthai h6 {
+        padding-left: 10px;
+        color: green;
+    }
+
+    .trangthai svg {
+        margin-left: 50px;
+    }
+/* Study Plan */
+.center {
+    display: flex;
+    margin: 60px 150px;
+    justify-content: center;
+}
+
+.target_text {
+    display: flex;
+    padding: 0 30px;
+    justify-content: space-between;
+}
+
+    .target_text p {
+        margin: 0 70px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+.line {
+    width: 224px;
+    height: 14px;
+    background-color: #007bff;
+    margin-top: 25px;
+}
+
+    .line .line-active {
+        background-color: #0071f9;
+    }
+
+.target_number {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.target_number_img {
+}
+
+.target_number img {
+    width: 60px;
+}
+
+.height-100 h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: #0071f9;
+}
+
+
+.main {
+    display: flex;
+    flex-decoration: row;
+}
+
+.main_col1 {
+    width: 530px;
+}
+
+.main_col1_name {
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+    .main_col1_name h2 {
+        font-weight: 800;
+        color: #0071f9;
+    }
+
+    .main_col1_name img {
+        width: 300px;
+    }
+
+.main_col1_lesson {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    gap: 20px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+    .image-container img {
+        display: block;
+    }
+
+    .image-container p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        color: white; /* Màu chữ */
+        font-size: 24px; /* Kích thước chữ */
+        font-weight: bold; /* Đậm chữ */
+        text-align: center;
+    }
+
+.main_col1_note img {
+    width: 270px;
+}
+
+.main_col1_lesson button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.main_col2 {
+    position: relative;
+    margin-left: 130px;
+}
+
+.main_col2_number {
+    position: relative;
+    z-index: 1;
+    top: 15px;
+}
+
+.main_col2_detail {
+    position: relative;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    width: 350px;
+    height: 90px;
+}
+
+    .main_col2_detail p {
+        font-size: 16px;
+        padding: 17px 0 0 0;
+        margin: 0 0 5px 0;
+    }
+
+    .main_col2_detail b {
+        font-size: 18px;
+    }
+
+.main_col2_plant {
+    position: absolute;
+    bottom: -250px;
+    right: -200px;
+}
+
+.scrollable-item {
+    max-height: 500px; /* Chiều cao tối đa cho toàn bộ phần tử */
+    overflow-y: auto; /* Khi vượt quá chiều cao, sẽ có thanh cuộn dọc */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f4f4f4; /* Màu nền cho toàn bộ phần cuộn */
+}
+
+
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+/* Modal background */
+#video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 20px;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+    /* Hover effect for close button */
+    .close-btn:hover,
+    .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }

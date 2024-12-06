@@ -1,0 +1,136 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerifyOtp</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            background: #606c88;
+            background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+            background: linear-gradient(to right, #5390bc, #004cff);
+            border-radius: 10px;
+            box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
+            max-width: 520px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 130px;
+        }
+        .info {
+            margin-bottom: 10px;
+        }
+
+        .title {
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .description {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .form .inputs {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+            .form .inputs input {
+                height: 2.5em;
+                width: 2.5em;
+                outline: none;
+                text-align: center;
+                font-size: 1.5em;
+                color: #fff;
+                border-radius: 0.3em;
+                border: 1px solid rgba(30, 228, 218, 0.363);
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
+                .form .inputs input:focus {
+                    border: 1px solid rgb(99 102 241);
+                }
+
+        .resend {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .resend-action {
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 6px;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+        }
+
+            .resend-action:hover {
+                text-decoration: underline #2b8af7;
+            }
+
+        .validate {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            text-decoration: none;
+            background-color: #4f74c8;
+            padding: 10px 20px;
+            margin: 8px 0 0 0;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: .3s ease;
+        }
+
+            .validate:hover {
+                background-color: #2960e0;
+            }
+    </style>
+</head>
+<body>
+    <h2></h2>
+
+    
+
+    @using (Html.BeginForm("CheckOtp", "Account", FormMethod.Post, new { @class = "form" }))
+    {
+       
+
+        <div class="info">
+            <span class="title">Xác Minh OTP</span>
+            <p class="description"><p>Email của bạn: <strong>@ViewBag.Email</strong></p> </p>
+        </div>
+        <div class="inputs">
+            <input name="otp1" type="tel" maxlength="1" required>
+            <input name="otp2" type="tel" maxlength="1" required>
+            <input name="otp3" type="tel" maxlength="1" required>
+            <input name="otp4" type="tel" maxlength="1" required>
+            <input name="otp5" type="tel" maxlength="1" required>
+            <input name="otp6" type="tel" maxlength="1" required>
+        </div>
+        <button class="validate" type="submit">Xác nhận</button>
+        <p class="resend">Bạn không nhận được mã ? <a href="@Url.Action("ResendOtp", "Account")" class="resend-action">Gửi lại</a></p>
+    }
+
+</body>
+</html>

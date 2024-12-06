@@ -1,0 +1,309 @@
+﻿@model IEnumerable<Nhom3_BTL_NguyenDuyHung.Models.question>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTable CSS -->
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- DataTable Buttons CSS -->
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <style>
+        .dataTables_wrapper .row {
+            display: flex;
+            justify-content: space-between; /* Căn đều các phần tử */
+            align-items: center; /* Căn các phần tử theo chiều dọc */
+        }
+
+        /* Điều chỉnh khoảng cách dưới các phần tử của DataTable */
+        .dataTables_wrapper .dataTables_length {
+            margin-bottom: 10px; /* Tăng khoảng cách dưới phần hiển thị số item mỗi trang */
+        }
+
+        .dataTables_wrapper .dataTables_info {
+            margin-bottom: 10px; /* Tăng khoảng cách dưới phần thông tin dữ liệu */
+        }
+
+        .dataTables_wrapper .dataTables_paginate {
+            margin-bottom: 10px; /* Tăng khoảng cách dưới phần pagination */
+        }
+
+        /* Điều chỉnh nút Export để căn ra ngoài cùng bên phải */
+        .dt-buttons {
+            float: right; /* Căn nút ra bên phải */
+            margin-left: 10px; /* Khoảng cách giữa các nút */
+        }
+
+            /* Tăng khoảng cách và kiểu dáng cho các nút Export */
+            .dt-buttons .btn {
+                margin-left: 10px; /* Khoảng cách giữa các nút */
+                font-size: 14px; /* Kích thước font */
+                padding: 8px 12px; /* Padding cho nút */
+                display: inline-flex;
+                align-items: center;
+            }
+
+                .dt-buttons .btn i {
+                    margin-right: 5px; /* Khoảng cách giữa biểu tượng và text */
+                }
+
+        .dataTables_wrapper .dataTables_paginate {
+            display: flex;
+            justify-content: flex-start; /* Căn các nút sang trái */
+            gap: 10px; /* Khoảng cách giữa các nút */
+            align-items: center; /* Căn các phần tử theo chiều dọc */
+        }
+
+            /* Điều chỉnh khoảng cách giữa phần thông tin trang và nút "Trang sau" */
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                margin-right: 5px; /* Giảm khoảng cách giữa các số trang */
+            }
+
+            /* Điều chỉnh cho nút "Trang sau" */
+            .dataTables_wrapper .dataTables_paginate .next {
+                margin-left: 10px; /* Thêm khoảng cách giữa nút "Trang sau" và số trang */
+            }
+
+        .next a {
+            margin-top: 0;
+        }
+
+        h1 {
+            text-align: center;
+            /*            padding-top: 30px;*/
+            font-size: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="~/csshocta/study.css">
+</head>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_toggle"> <img src="/img/logo.svg" alt=""> </div>
+        <div class="header_img"> <img src="/img/user-286.svg" alt=""> </div>
+    </header>
+    <div class="l-navbar mt-lg-5" id="nav-bar">
+        <nav class="nav">
+            <div>
+
+                <div class="nav_list">
+                    <a href="@Url.Action("Index", "Admins")" class="nav_link" title="Quản lý Admin">
+                        <i><img src="/img/over_view.svg" alt="Icon"></i>
+                        <span class="nav_name">Quản lý Admin</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Answers")" class="nav_link" title="Quản lý đáp án">
+                        <i><img src="/img/study_plan.svg"></i>
+                        <span class="nav_name">Quản lý đáp án</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Courses")" class="nav_link" title="Quản lý khóa học">
+                        <i><img src="/img/my_courses.svg"></i>
+                        <span class="nav_name">Quản lý khóa học</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Enrollments")" class="nav_link active" title="Quản lý ghi danh">
+                        <i><img src="~/img/test_practice_active.svg"></i>
+                        <span class="nav_name">Quản lý ghi danh</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Grades")" class="nav_link" title="Quản lý Admin">
+                        <i><img src="/img/learning_profile.svg"></i>
+                        <span class="nav_name">Quản lý bài học</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Lessons")" class="nav_link" title="Quản lý Admin">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Quản lý đáp án</span>
+                    </a>
+                    <a href="@Url.Action("Index", "questions")" class="nav_link" title="Quản lý Admin">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Quản lý kiểm tra</span>
+                    </a>
+                    <a href="@Url.Action("Index", "tests")" class="nav_link" title="Quản lý Admin">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Quản lý người dùng</span>
+                    </a>
+                    <a href="@Url.Action("Index", "users")" class="nav_link" title="Quản lý Admin">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Quản lý người dùng</span>
+                    </a>
+                </div>
+            </div>
+            <div class="bt-out">
+                <a href="#" class="nav_link">
+                    <i class='bx bx-log-out nav_icon'></i>
+                    <span class="nav_name">Về trang chủ</span>
+                </a>
+            </div>
+
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        <div class="container mt-4">
+            <h1 class="mb-4">Danh sách bài học</h1>
+            <p>
+                @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+            <table id="questionTable" class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            Câu hỏi
+                        </th>
+                        <th>
+                            Loại
+                        </th>
+                        <th>
+                            Đáp án
+                        </th>
+                        <th>
+                            Âm thanh
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Đáp Án A
+                        </th>
+                        <th>
+                            Đáp Án B
+                        </th>
+                        <th>
+                            Đáp Án C
+                        </th>
+                        <th>
+                            Đáp Án D
+                        </th>
+                        <th>
+                            Tiêu đề
+                        </th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.cauHoi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.loai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dapAn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.amThanh)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Anh)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.A)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.B)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.C)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.D)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.test.tieuDe)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.maCauHoi }, new { @class = "btn btn-warning btn-sm" }) |
+                                @Html.ActionLink("Thông tin", "Details", new { id = item.maCauHoi }, new { @class = "btn btn-info btn-sm" }) |
+                                @Html.ActionLink("Xóa", "Delete", new { id = item.maCauHoi }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#questionTable').DataTable({
+                    dom: "<'row'<'col-sm-2'l><'col-sm-4'f><'col-sm-6 text-right'B>>" + // Tìm kiếm ở bên trái và các nút xuất ở bên phải trên cùng
+                        "<'row'<'col-sm-12'tr>>" + // Cấu trúc bảng (table) ở giữa
+                        "<'row'<'col-sm-7'p>>", // Phần Pagination (số trang) chuyển sang bên trái
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            text: '<i class="fas fa-file-excel"></i> Xuất Excel',
+                            className: 'btn btn-success'
+                        },
+                        {
+                            extend: 'csvHtml5',
+                            text: '<i class="fas fa-file-csv"></i> Xuất CSV',
+                            className: 'btn btn-info'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: '<i class="fas fa-file-pdf"></i> Xuất PDF',
+                            className: 'btn btn-danger'
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fas fa-print"></i> In bảng',
+                            className: 'btn btn-secondary'
+                        }
+                    ],
+                    columnDefs: [
+                        { targets: 0, width: '20%' },
+                        { targets: 1, width: '10%' },
+                        { targets: 2, width: '20%' },
+                        { targets: 3, width: '20%' },
+                        { targets: 4, width: '30%' }
+                    ],
+                    language: {
+                        lengthMenu: "Hiển thị _MENU_ mục mỗi trang",
+                        zeroRecords: "Không tìm thấy dữ liệu",
+                        info: "Hiển thị trang _PAGE_ trên tổng _PAGES_",
+                        infoEmpty: "Không có dữ liệu",
+                        infoFiltered: "(lọc từ tổng số _MAX_ mục)",
+                        search: "Tìm kiếm:",
+                        paginate: {
+                            next: "Trang sau",
+                            previous: "Trang trước"
+                        }
+                    },
+                    lengthMenu: [5, 10, 25, 50, 100],
+                    pageLength: 10
+                });
+            });
+        </script>
+
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script src="/js/study.js"></script>
+    </div>
+</body>
+</html>
+

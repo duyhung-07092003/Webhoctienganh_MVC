@@ -1,0 +1,553 @@
+﻿@model Nhom3_BTL_NguyenDuyHung.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/trangchu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Prep</title>
+    <style>
+        .start_study p a {
+            text-decoration: none !important;
+            color: white !important;
+        }
+        .dd_list_users {
+            display: none;
+            position: absolute; /* Đảm bảo nó không chiếm không gian */
+            background-color: white; /* Background trắng */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ mờ */
+            padding: 10px 0;
+            list-style-type: none; /* Loại bỏ dấu chấm trong danh sách */
+            border-radius: 8px; /* Bo góc cho danh sách */
+            min-width: 200px; /* Đặt chiều rộng tối thiểu */
+            z-index: 1000;
+            left: 1100px; /* Đảm bảo nó nằm trên các phần tử khác */
+        }
+
+        /* Khi hover vào phần tử dd_list_user_relative chứa hình ảnh, hiển thị danh sách */
+        .dd_list_user_relative:hover + .dd_list_users {
+            display: block;
+        }
+
+        /* Các mục trong danh sách */
+        .dd_list_user {
+            margin: 0; /* Bỏ khoảng cách ngoài */
+            padding: 8px 15px; /* Thêm padding cho mục */
+        }
+
+            .dd_list_user a {
+                text-decoration: none; /* Loại bỏ gạch chân */
+                color: black; /* Màu chữ đen */
+                display: block; /* Đảm bảo vùng click rộng */
+                padding: 8px 0;
+            }
+
+                /* Hiệu ứng hover cho các mục trong danh sách */
+                .dd_list_user a:hover {
+                    background-color: #f0f0f0; /* Màu nền khi hover vào mục */
+                    color: #007bff; /* Màu chữ khi hover */
+                }
+
+        /* Đảm bảo hình ảnh luôn hiển thị */
+        .dd_list_user_relative img {
+            display: block;
+            width: 60px; /* Hoặc chiều rộng tùy chỉnh */
+            height: auto; /* Đảm bảo tỷ lệ ảnh đúng */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <!-- <div class="banner">
+            <a href="#">
+                <img src="img/banner.png" alt="Banner">
+            </a>
+        </div> -->
+    </div>
+    <div class="body">
+        <div class="bee_support" onclick="toggleChat()">
+            <a href="#">
+                <img class="animate__animated animate__pulse animate__infinite" src="/img/bee-support.svg" alt="">
+            </a>
+        </div>
+        <div id="chatbox" style="display: none;">
+            <div id="chatbox-messages" style="flex: 1; overflow-y: auto; margin-bottom: 10px;">
+                <!-- Tin nhắn sẽ được thêm tại đây -->
+            </div>
+            <div style="display: flex;">
+                <input type="text" id="userMessage" placeholder="Nhập tin nhắn..." style="flex: 1; padding: 5px;">
+                <button onclick="sendMessage()" style="margin-left: 5px; padding: 5px 10px;">Gửi</button>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="nav_logo">
+                <a href="#">
+                    <img src="~/img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav_list">
+                <ul class="nav_list_items">
+                    <li class="nav_list_item"><a href="#">Trang chủ</a></li>
+                    <li class="nav_list_item nav_list_item-relative">
+                        Khóa học
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-menu">
+                            <ul>
+                                @*<a href="@Url.Action("Index", "Studys")" class="nav_link active" title="Quản lý Admin">*@
+                                <li><a href="@Url.Action("Index", "KhoahocAieo")" class="nav_link active" title="Luyện thi TOEIC">Luyện thi TOEIC</a></li>
+                                <li><a href="/ielts.html">Luyện thi IELTS</a></li>
+                                <li><a href="">Luyện thi HSK</a></li>
+                                <li><a href="">PrepTalk English</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav_list_item"><a href="@Url.Action("Index", "Studys")" class="nav_link active" title="Luyện thi TOEIC">Kiểm tra đầu vào</a></li>
+                    <li class="nav_list_item nav_list_item-relative">
+                        Blog
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="">TOEIC </a></li>
+                                <li><a href="">IELTS</a></li>
+                                <li><a href="">HSK</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav_list_item nav_list_item-relative">
+                        Tin tức
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><a href="#">Vinh Danh Học Viên</a></li>
+                                <li><a href="#">Sự Kiện - Khuyến Mãi</a></li>
+                                <li><a href="#">Tuyển Dụng</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="start">
+                <div class="start_study">
+                    <p><a class="study_link" href="~/Studys/Index">Bắt đầu học</a></p>
+                </div>
+                <div class="start_login">
+                    <div class="dd_user">
+                        <!-- Đưa hình ảnh ra ngoài phần tử li -->
+                        <div class="dd_list_user_relative">
+                            <img src="~/img/user-286.svg" alt="">
+                        </div>
+
+                        <!-- Danh sách các mục -->
+                        <ul class="dd_list_users">
+                            <li class="dd_list_user"><a href="#">@Model.hoTen</a></li>
+                            <hr>
+                            <li class="dd_list_user"><a href="#">Trao đổi về bài chấm chữa</a></li>
+                            <li class="dd_list_user"><a href="#">Cài đặt</a></li>
+                            <hr>
+                            <li class="dd_list_user"><a href="#">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="boby_main">
+            <div class="boby_main_background">
+                <img class="boby_main_background-opacity" src="/img/oval_loop.png" alt="">
+                <div class="boby_main_intro">
+                    <p class="animate__animated animate__bounceInRight animate__delay-0.5s">Nền tảng Học <img class="animate__animated animate__bounceInDown animate__delay-1s" src="/img/img_intro.png" alt=""></p>
+                    <!-- animate__animated animate__bounceInRight animate__infinite -->
+                    <p class="animate__animated animate__bounceInLeft animate__delay-1s"><img src="/img/bee_intro.png" alt=""> và Luyện thi</p>
+                    <p>thông minh</p>
+                </div>
+                <div class="body_main_btn">
+                    <a href="#">KHÁM PHÁ NGAY</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option_title">
+                <h2>
+                    Tinh
+                    thông
+                    mọi
+                    ngôn
+                    ngữ
+                    với
+                    bộ
+                    chương
+                    trình
+                    đào
+                    tạo
+                    chất
+                    lượng
+                    cao
+                </h2>
+                <p>Học ngoại ngữ thật dễ dàng với lộ trình Học & Luyện Thi toàn diện, được cá nhân hóa riêng biệt.</p>
+            </div>
+            <div class="option_cards">
+                <div class="option_card"
+                     style="background-image: radial-gradient(218.93% 138.81% at 100% 98.77%,#0029ff 0,#1479f3 50%,#47b7f7 100%)">
+                    <h3>IELTS</h3>
+                    <p>
+                        Học toàn diện 4 kỹ năng, chấm chữa cặn kẽ cùng giáo viên, luyện tập thông minh với phòng ảo Prep
+                        AI.
+                    </p>
+                    <div class="option_card_btn">→</div>
+                </div>
+                <div class="option_card"
+                     style="background-image: radial-gradient(99.48% 132.1% at 2.5% 100%,#002ea6 0,#0047ff 100%)">
+                    <h3>TOEIC</h3>
+                    <p>
+                        Lộ trình học tinh gọn, bật mí bí kíp về đích nhanh chóng, dễ dàng đạt mục tiêu khi luyện đề cùng
+                        phòng ảo Prep AI.
+                    </p>
+                    <div class="option_card_btn">→</div>
+                </div>
+                <div class="option_card" style="background-image: linear-gradient(46deg,#007e26,#00d741)">
+                    <h3>HSK</h3>
+                    <p>
+                        Xây nền chắc chắn, chuẩn chỉnh từ sơ cấp. Luyện tập khẩu ngữ cùng AI, tiến bộ rõ nét qua từng
+                        bài.
+                    </p>
+                    <div class="option_card_btn">→</div>
+                </div>
+                <div class="option_card"
+                     style="background-image: linear-gradient(219deg, #ffd324 4.72%, #ff9f00 95.59%);">
+                    <h3>PrepTalk English</h3>
+                    <p>
+                        Giao tiếp linh hoạt với bộ chủ đề có tính ứng dụng cao, thực hành và chấm chữa liên tục trong đa
+                        hoạt cảnh cùng phòng ảo nhập vai Prep AI.
+                    </p>
+                    <div class="option_card_btn">→</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container_background">
+            <div class="container">
+                <div class="container_title">
+                    <h1>Tối ưu hành trình Học & Luyện Thi với 3 bước dễ dàng</h1>
+                    <p>Prep sẽ luôn đồng hành cùng bạn xuyên suốt hành trình khổ luyện cho đến ngày "hái quả ngọt"</p>
+                </div>
+                <ul id="cards">
+                    <li class="card" id="card1">
+                        <div class="card-body">
+                            <div class="card-body_title">
+                                <h1>Bước 1</h1>
+                                <div class="card-body_title_description">
+                                    <h2>Thiết kế lộ trình học cá nhân hóa</h2>
+                                    <p>
+                                        Lộ trình học được "may đo" theo "thông số riêng" của bạn và đặc biệt phù hợp với
+                                        mục tiêu, kế hoạch của chính bạn.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-body_img">
+                                <img src="/img/buoc1.png" alt="">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="card" id="card2">
+                        <div class="card-body">
+                            <div class="card-body_title">
+                                <h1>Bước 2</h1>
+                                <div class="card-body_title_description">
+                                    <h2>Học và theo dõi tiến bộ</h2>
+                                    <p>
+                                        Học tập, thực hành, chấm chữa toàn diện và phân tích, theo dõi sự tiến bộ qua
+                                        từng ngày.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-body_img">
+                                <img src="/img/buoc2.png" alt="">
+                            </div>
+                    </li>
+                    <li class="card" id="card3">
+                        <div class="card-body">
+                            <div class="card-body_title">
+                                <h1>Bước 3</h1>
+                                <div class="card-body_title_description">
+                                    <h2>Prep hỗ trợ đăng ký thi - Preppies báo điểm, nhận quà vinh danh siêu xịn</h2>
+                                    <p>
+                                        Prep sẵn sàng hỗ trợ học viên đăng ký thi với ưu đãi tốt nhất. Bạn còn nhận được
+                                        những phần quà siêu xịn khi đủ điều kiện là học viên điểm cao và được Vinh danh
+                                        trên cộng đồng Preppies. Học thật chăm, thi thật tốt và báo điểm với Prep nhé!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-body_img">
+                                <img src="/img/buoc3.png" alt="">
+                            </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="honor">
+            <div class="honor_head">
+                <h2>Chất lượng được minh chứng bởi</h2>
+                <h2>Hàng nghìn gương mặt xuất sắc</h2>
+            </div>
+            <div class="honor_toeic">
+                <h3 class="honor_toeic_title">Vinh danh học viên xuất sắc nhất tháng 11</h3>
+                <div class="honor_toeic_details">
+                    <div class="honor_toeic_details_img">
+                        <img src="/img/990toeic.jpg" alt="">
+                        <div class="honor_img_intro">
+                            <p>Trần Thị Hương</p>
+                            <p>21 tuổi • Ngày thi: 7.3.2024</p>
+                        </div>
+                    </div>
+                    <div class="honor_toeic_details_description">
+                        <p>
+                            Các đề trong Phòng Luyện ảo mình thấy sát với đề thực tế. Mình rất ưng phần chấm chữa chi
+                            tiết, phần này giải thích cho mình cả những lỗi sai lẫn câu đúng, từ đó mình cải thiện dần
+                            dần cả 2 kỹ năng Listening và Reading.
+                        </p>
+                        <div class="honor_toeic_point">
+                            <div class="honor_toeic_point_total">
+                                <h1>990</h1>
+                                <span>
+                                    <p>TOEIC</p>
+                                    <p>L&R</p>
+                                </span>
+
+                            </div>
+                            <div class="honor_toeic_point_details">
+                                <span>
+                                    <h3> 495 </h3>
+                                    <p> Listening </p>
+                                </span>
+                                <span>
+                                    <h3> 495 </h3>
+                                    <p> Reading</p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="background_color">
+            <div class="course">
+                <div class="course_intro">
+                    <div class="course_img">
+                        <img src="/img/bee_speaking.png" alt="">
+                    </div>
+                    <div class="course_title">
+                        <h2>Những chương trình học </h2>
+                        <h2>có thể phù hợp với bạn</h2>
+                    </div>
+                </div>
+                <div class="course_option">
+                    <div class="course_option_btn">IELTS <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="course_option_btn">TOEIC <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="course_option_btn">HSK <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="course_option_btn">PrepTalk English <i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="background_color">
+            <div class="contact">
+                <div class="contact_title">
+                    <h2>Bạn còn </br>câu hỏi khác?</h2>
+                    <p>Hãy để lại thông tin, Prep sẽ liên hệ và hỗ trợ xử lý mọi vướng mắc của bạn</p>
+                    <img src="/img/bee_typing.png" alt="">
+                </div>
+                <div class="contact_form">
+                    <form action="#" method="POST">
+                        <div class="form_group">
+                            <label for="fullname">Họ và tên (*)</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên của bạn"
+                                   required>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="phone">Số điện thoại (*)</label>
+                            <input type="text" id="phone" name="phone" placeholder="+84" required>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="birthyear">Năm sinh</label>
+                            <input type="text" id="birthyear" name="birthyear" placeholder="Nhập năm sinh của bạn">
+                        </div>
+
+                        <div class="form_group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email của bạn">
+                        </div>
+
+                        <div class="form_group">
+                            <label for="youare">Bạn là</label>
+                            <select id="youare" name="youare">
+                                <option value="">Lựa chọn</option>
+                                <option value="student">Học sinh</option>
+                                <option value="teacher">Giáo viên</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="course">Khóa học bạn quan tâm (*)</label>
+                            <select id="course" name="course" required>
+                                <option value="">Lựa chọn</option>
+                                <option value="ielts">IELTS</option>
+                                <option value="toeic">TOEIC</option>
+                                <option value="hsk">HSK</option>
+                                <option value="preptalk">PrepTalk English</option>
+                            </select>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="message">Nội dung</label>
+                            <textarea id="message" name="message" placeholder="Bạn có câu hỏi gì?
+•  Hãy cho Prep biết trình độ hiện tại
+•  Mục tiêu mong muốn"></textarea>
+                        </div>
+                        <p>
+                            Bằng việc gửi đăng ký nhận tư vấn, bạn đã đồng ý với Chính sách bảo mật thông tin của Prep.
+                        </p>
+                        <button type="submit" class="submit_btn">
+                            Gửi câu hỏi <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer_section">
+            <img src="/img/logo_footer.svg" alt="Logo Prep">
+            <h3>CÔNG TY CỔ PHẦN CÔNG NGHỆ PREP</h3>
+            <p><strong>Mã số doanh nghiệp: </strong>0109817671</p>
+            <p>
+                <strong>Địa chỉ: </strong>Số nhà 20 Ngách 234/35 Đường Hoàng Quốc Việt, Phường Cổ Nhuế 1, Quận Bắc Từ
+                Liêm, Thành phố Hà Nội, Việt Nam
+            </p>
+            <p><strong>Trụ sở văn phòng: </strong>NO.21-C2 KĐT Nam Trung Yên, P.Trung Hoà, Q.Cầu Giấy, Tp. Hà Nội</p>
+        </div>
+
+        <div class="footer_section footer_section-info">
+            <h3>VỀ PREP</h3>
+            <ul>
+                <li><a href="">Giới thiệu</a></li>
+                <li><a href="">Tuyển dụng</a></li>
+            </ul>
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <div class="social_icons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="footer_section footer_section-info">
+            <h3>THÔNG TIN</h3>
+            <ul>
+                <li><a href="">Điều kiện và điều khoản giao dịch</a></li>
+                <li><a href="">Chính sách thanh toán</a></li>
+                <li><a href="">Chính sách bảo mật thông tin</a></li>
+                <li><a href="">Cam kết đầu ra IELTS</a></li>
+                <li><a href="">Cam kết đầu ra TOEIC</a></li>
+                <li><a href="">Chính sách sử dụng AI</a></li>
+            </ul>
+        </div>
+
+        <div class="footer_section">
+            <h3>TẢI ỨNG DỤNG TRÊN ĐIỆN THOẠI</h3>
+            <a href=""><img src="/img/google_play.png" alt="Google Play"></a>
+            <a href=""><img src="/img/app_store.png" alt="App Store"></a>
+        </div>
+    </div>
+
+    <div class="footer_bottom">
+        <h3>TRUNG TÂM ĐÀO TẠO NGOẠI NGỮ PREP</h3>
+        <p><strong>Phòng luyện ảo - Trải nghiệm thực tế - Công nghệ hàng đầu</strong></p>
+        <p><strong>Hotline:</strong> 0931 42 8899</p>
+        <p>
+            <strong>Địa chỉ: </strong>Địa chỉ: Số nhà 20, ngách 234/35 đường Hoàng Quốc Việt, phường Cổ Nhuế 1, quận Bắc
+            Từ Liêm, TP Hà Nội
+        </p>
+        <p>
+            Giấy chứng nhận hoạt động đào tạo, bồi dưỡng số 1309/QĐ-SGDĐT ngày 31 tháng 07 năm 2023 do Sở Giáo dục và Đào
+            tạo Hà Nội cấp
+        </p>
+        <div class="certificates">
+            <img src="/img/license_bct.svg" alt="Bộ Công Thương">
+            <img src="/img/license_sectigo.svg" alt="Sectigo">
+            <img src="/img/license_dcma.svg" alt="DMCA">
+        </div>
+    </div>
+    <script>
+        function toggleChat() {
+            var chatbox = document.getElementById('chatbox');
+            if (chatbox.style.display === 'none' || chatbox.style.display === '') {
+                chatbox.style.display = 'flex';
+            } else {
+                chatbox.style.display = 'none';
+            }
+        }
+
+        function appendMessage(sender, message) {
+            var messagesContainer = document.getElementById('chatbox-messages');
+            var messageElement = document.createElement('div');
+            messageElement.style.margin = '5px 0';
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Tự động cuộn xuống cuối
+        }
+
+        async function sendMessage() {
+            var userMessage = document.getElementById('userMessage').value.trim();
+            if (userMessage !== '') {
+                appendMessage('You', userMessage);
+                document.getElementById('userMessage').value = '';
+
+                try {
+                    // Gọi API OpenAI
+                    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer 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` // Thay YOUR_API_KEY bằng API Key của bạn
+                        },
+                        body: JSON.stringify({
+                            model: 'gpt-3.5-turbo', // Hoặc model bạn đang dùng
+                            messages: [{ role: 'user', content: userMessage }]
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const botMessage = data.choices[0].message.content;
+                        appendMessage('Bot', botMessage);
+                    } else {
+                        appendMessage('Bot', 'Có lỗi xảy ra: ' + (data.error?.message || 'Không rõ lỗi'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    appendMessage('Bot', 'Không thể kết nối đến máy chủ.');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

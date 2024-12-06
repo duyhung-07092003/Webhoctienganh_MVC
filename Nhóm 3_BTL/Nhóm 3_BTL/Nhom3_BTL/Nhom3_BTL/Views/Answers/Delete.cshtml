@@ -1,0 +1,126 @@
+﻿@model Nhom3_BTL_NguyenDuyHung.Models.Answer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xóa câu trả lời</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h4 {
+            font-size: 22px;
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-row {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #c9302c;
+            }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+            .back-link a {
+                text-decoration: none;
+                color: #0d6efd;
+            }
+
+                .back-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h4>Bạn có chắc chắn muốn xóa câu trả lời này?</h4>
+        <hr />
+
+        <div class="info-row">
+            <span class="info-label">Câu trả lời:</span>
+            @Html.DisplayFor(model => model.traLoi)
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Đã kiểm tra:</span>
+            @Html.DisplayFor(model => model.kiemTra)
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Câu hỏi:</span>
+            @Html.DisplayFor(model => model.question.cauHoi)
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Người dùng:</span>
+            @Html.DisplayFor(model => model.user.tenTaiKhoan)
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <input type="submit" value="Xóa" class="btn" />
+            </div>
+        }
+
+        <div class="back-link">
+            @Html.ActionLink("Quay trở lại", "Index")
+        </div>
+    </div>
+</body>
+</html>

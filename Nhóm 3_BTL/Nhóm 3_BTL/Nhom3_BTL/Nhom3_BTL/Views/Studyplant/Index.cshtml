@@ -1,0 +1,214 @@
+﻿@model IEnumerable<Nhom3_BTL_NguyenDuyHung.Models.Lesson>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/study-plant.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_toggle"> <img src="/img/logo.svg" alt=""> </div>
+        <div class="header_img"> <img src="/img/user-286.svg" alt=""> </div>
+    </header>
+    <div class="l-navbar mt-lg-5" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                    <i class='bx bx-layer nav_logo-icon'></i>
+                    <span class="nav_logo-name">Duy Hung</span>
+                </a>
+                <div class="nav_list">
+                    <a href="@Url.Action("Index", "Studys")" class="nav_link" title="Overview">
+                        <i><img src="~/img/over_view.svg" alt="Icon"></i>
+                        <span class="nav_name">Overview</span>
+                    </a>
+                    <a href="@Url.Action("Index", "Studyplant")" class="nav_link active" title="Study Plan">
+                        <i><img src="~/img/study_plan.svg" alt="Icon"></i>
+                        <span class="nav_name">Study Plan</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i><img src="/img/my_courses.svg"></i>
+                        <span class="nav_name">My Courses</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i><img src="/img/test_practice.svg"></i>
+                        <span class="nav_name">Test Practice</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i><img src="/img/learning_profile.svg"></i>
+                        <span class="nav_name">Learning Profile</span>
+                    </a>
+                    <!-- <a href="#" class="nav_link">
+                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                    <span class="nav_name">Stats</span> </a>  -->
+                </div>
+            </div>
+            <div class="bt-out">
+                <a href="#" class="nav_link">
+                    <i class='bx bx-log-out nav_icon'></i>
+                    <span class="nav_name">Về trang chủ</span>
+                </a>
+            </div>
+
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        <div class="center">
+            <div class="target">
+                <div class="target_text">
+                    <p>Nền tảng TOEIC</p>
+                    <p>TOEIC Trung cấp</p>
+                    <p>TOEIC Chuyên sâu</p>
+                </div>
+                <div class="target_number">
+                    <div class="target_number_img">
+                        <a href="">
+                            <img src="~/img/Remove-bg.ai_1732615366080.png" alt="">
+                        </a>
+                    </div>
+                    <div class="line line-active"></div>
+                    <div class="target_number_img">
+                        <a href="">
+                            <img src="~/img/Remove-bg.ai_1732615366080.png" alt="">
+                        </a>
+                    </div>
+                    <div class="line line-active"></div>
+                    <div class="target_number_img">
+                        <a href="">
+                            <img src="~/img/Remove-bg.ai_1732615366080.png" alt="">
+                        </a>
+                    </div>
+                    <div class="line"></div>
+                    <div class="target_number_img">
+                        <a href="">
+                            <img src="~/img/Remove-bg.ai_1732615366080.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Chúc mừng, bạn đã đạt được trình độ 400+</h3>
+        <div class="main">
+            <div class="main_col1">
+                <div class="main_col1_name">
+                    <h2>@ViewBag.Name</h2>
+                    <p>Chặng này bao gồm các khóa: TOEIC Ngữ Pháp Cơ Bản ,TOEIC Từ Vựng Cơ Bản</p>
+                    <img src="~/img/study-plan.jpg" alt="">
+                </div>
+
+                <div class="main_col1_lesson">
+                    @{ int dem = 1; }
+                    @foreach (var item in Model)
+                    {
+                        <button class="lesson-button" onclick="scrollToLesson(event,@dem)">
+                            <div class="image-container">
+                                <img src="~/img/hx-s.svg" alt="">
+                                <p>
+                                    @dem
+                                </p>
+                            </div>
+                        </button>
+                        dem++;
+                    }
+                    <div class="main_col1_note">
+                        <img src="~/img/study-note.jpg" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="main_col2 scrollable-item">
+                @{ dem = 1; }
+                @foreach (var item in Model)
+                {
+                    <div class="main_col2_number" id="lesson-@dem">
+                        <div class="image-container">
+                            <img src="~/img/hx-s.svg" alt="">
+                            <p>@dem</p>
+                        </div>
+                    </div>
+                    <div class="main_col2_detail">
+                        <p>@item.tieuDe</p>
+                        <button class="btn-primary" id="lesson-button-@dem" onclick="hienthibai('@item.noiDung')"><b>Xem nội dung</b></button>
+                    </div>
+                    dem++;
+                }
+
+            </div>
+            <!--<div class="main_col2_plant">
+                <img src="~/img/plant-1.svg" alt="">
+            </div>-->
+
+
+            <script>
+                function hienthibai(noiDung) {
+                    var modalHTML = `
+                                                <div id="video-modal" style="display: none;" >
+                                                    <div class="modal-content">
+                                                        <span class="close-btn" onclick="closeModal()">×</span>
+                                                        <video id="video-player" width="800" controls>
+                                                            <source id="video-source" src="" type="video/mp4">
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                          `;
+
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+
+                    var videoUrl = "/video/" + noiDung;
+                    var videoPlayer = document.getElementById("video-player");
+                    var videoSource = document.getElementById("video-source");
+                    videoSource.src = videoUrl;
+
+
+                    videoPlayer.load();
+
+
+                    document.getElementById("video-modal").style.display = "block";
+                }
+
+                function closeModal() {
+                    var modal = document.getElementById("video-modal");
+                    if (modal) {
+                        modal.style.display = "none";
+                        modal.remove();
+                    }
+                }
+                function scrollToLesson(event, lessonIndex) {
+                    event.preventDefault();
+
+                    var lessonElement = document.getElementById('lesson-' + lessonIndex);
+
+
+                    if (lessonElement) {
+
+                        lessonElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+                }
+            </script>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="~/js/study.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

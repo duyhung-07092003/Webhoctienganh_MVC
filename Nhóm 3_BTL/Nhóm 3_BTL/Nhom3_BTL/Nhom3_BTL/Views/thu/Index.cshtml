@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi mã OTP</title>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"></script>
+</head>
+<body>
+    <form>
+        <input id="number" name="phone" type="text" placeholder="Nhập số điện thoại" class="form-control mb-3" required />
+        <div id="recaptcha-container"></div>
+        <button type="button" id="sendOTP" class="btn btn-primary w-100">Gửi mã OTP</button>
+    </form>
+    <div id="otpSection" style="display:none;">
+        <input id="otp" type="text" placeholder="Nhập mã OTP" class="form-control mb-3" />
+        <button type="button" id="verifyOTP" class="btn btn-success w-100">Xác minh</button>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdkhClxX5J0oTc3NHCo8xhyn3JFWYl-Q8",
+            authDomain: "otpfirebase-d752b.firebaseapp.com",
+            projectId: "otpfirebase-d752b",
+            storageBucket: "otpfirebase-d752b.firebasestorage.app",
+            messagingSenderId: "148827772088",
+            appId: "1:148827772088:web:54002b32f8f5320498104d",
+            measurementId: "G-1Q1E9HDEMK"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function render() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+            recaptchaVerifier.render();
+        }
+
+        function phoneAuth() {
+            const number = "+84" + document.getElementById("number").value;
+            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(confirmationResult => {
+                window.confirmationResult = confirmationResult;
+                document.getElementById("otpSection").style.display = "block";
+                alert("OTP đã được gửi.");
+            }).catch(error => alert(error.message));
+        }
+
+        function codeverify() {
+            const code = document.getElementById("otp").value;
+            window.confirmationResult.confirm(code).then(result => {
+                alert("Xác minh thành công.");
+                window.location.href = "/StartPage/registration";
+            }).catch(error => alert("Lỗi xác minh: " + error.message));
+        }
+
+        window.onload = render;
+
+        document.getElementById("sendOTP").addEventListener("click", phoneAuth);
+        document.getElementById("verifyOTP").addEventListener("click", codeverify);
+    </script>
+</body>
+</html>

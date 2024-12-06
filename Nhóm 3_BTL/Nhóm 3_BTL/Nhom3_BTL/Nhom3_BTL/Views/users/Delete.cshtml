@@ -1,0 +1,163 @@
+﻿@model Nhom3_BTL_NguyenDuyHung.Models.user
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <style>
+        /* Đặt kiểu chữ và căn chỉnh cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Khung container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tiêu đề */
+        h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+
+        /* Định dạng danh sách thông tin */
+        dl {
+            margin-bottom: 20px;
+        }
+
+        dt {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        dd {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Nút hành động */
+        .form-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+            .btn-danger:hover {
+                background-color: #c9302c;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Bạn có chắc chắn muốn xóa người dùng này không?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên tài khoản:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tenTaiKhoan)
+                </dd>
+
+                <dt>
+                    Mật khẩu:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.matKhau)
+                </dd>
+
+                <dt>
+                    Họ tên:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hoTen)
+                </dd>
+
+                <dt>
+                    Giới tính:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.gioiTinh)
+                </dd>
+
+                <dt>
+                    Ngày sinh:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaySinh)
+                </dd>
+
+                <dt>
+                    Số điện thoại:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sdt)
+                </dd>
+
+                <dt>
+                    Trình độ:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.trinhDo)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                    <br />
+                    @Html.ActionLink("Quay trở lại", "Index")
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+</html>
+

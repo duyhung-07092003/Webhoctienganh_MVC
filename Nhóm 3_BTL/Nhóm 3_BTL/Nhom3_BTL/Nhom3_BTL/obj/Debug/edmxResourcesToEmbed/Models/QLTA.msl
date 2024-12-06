@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTiengAnhModelStoreContainer" CdmEntityContainer="QLTiengAnhEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="tenTaiKhoan" ColumnName="tenTaiKhoan" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="maTraLoi" ColumnName="maTraLoi" />
+          <ScalarProperty Name="maCauHoi" ColumnName="maCauHoi" />
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+          <ScalarProperty Name="traLoi" ColumnName="traLoi" />
+          <ScalarProperty Name="kiemTra" ColumnName="kiemTra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Courses">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+          <ScalarProperty Name="tenKhoaHoc" ColumnName="tenKhoaHoc" />
+          <ScalarProperty Name="moTa" ColumnName="moTa" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enrollment">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Enrollment">
+        <MappingFragment StoreEntitySet="Enrollment">
+          <ScalarProperty Name="maGhiDanh" ColumnName="maGhiDanh" />
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+          <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+          <ScalarProperty Name="ngayGhiDanh" ColumnName="ngayGhiDanh" />
+          <ScalarProperty Name="tienDo" ColumnName="tienDo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grade">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="maDiem" ColumnName="maDiem" />
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+          <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lesson">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="maBaiHoc" ColumnName="maBaiHoc" />
+          <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+          <ScalarProperty Name="noiDung" ColumnName="noiDung" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.question">
+        <MappingFragment StoreEntitySet="question">
+          <ScalarProperty Name="maCauHoi" ColumnName="maCauHoi" />
+          <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+          <ScalarProperty Name="cauHoi" ColumnName="cauHoi" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+          <ScalarProperty Name="dapAn" ColumnName="dapAn" />
+          <ScalarProperty Name="amThanh" ColumnName="amThanh" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="D" ColumnName="D" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.test">
+        <MappingFragment StoreEntitySet="test">
+          <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+          <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="QLTiengAnhModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+          <ScalarProperty Name="tenTaiKhoan" ColumnName="tenTaiKhoan" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="trinhDo" ColumnName="trinhDo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

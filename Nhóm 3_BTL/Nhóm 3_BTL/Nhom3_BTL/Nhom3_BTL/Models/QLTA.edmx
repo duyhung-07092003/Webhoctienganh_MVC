@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTiengAnhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="tenTaiKhoan" />
+          </Key>
+          <Property Name="tenTaiKhoan" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="matKhau" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="maTraLoi" />
+          </Key>
+          <Property Name="maTraLoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maCauHoi" Type="int" />
+          <Property Name="maTaiKhoan" Type="int" />
+          <Property Name="traLoi" Type="text" />
+          <Property Name="kiemTra" Type="bit" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="maKhoaHoc" />
+          </Key>
+          <Property Name="maKhoaHoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenKhoaHoc" Type="varchar" MaxLength="100" />
+          <Property Name="moTa" Type="text" />
+          <Property Name="gia" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ngayTao" Type="date" />
+        </EntityType>
+        <EntityType Name="Enrollment">
+          <Key>
+            <PropertyRef Name="maGhiDanh" />
+          </Key>
+          <Property Name="maGhiDanh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maTaiKhoan" Type="int" />
+          <Property Name="maKhoaHoc" Type="int" />
+          <Property Name="ngayGhiDanh" Type="date" />
+          <Property Name="tienDo" Type="int" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="maDiem" />
+          </Key>
+          <Property Name="maDiem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maTaiKhoan" Type="int" />
+          <Property Name="maBaiKT" Type="int" />
+          <Property Name="Diem" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="maBaiHoc" />
+          </Key>
+          <Property Name="maBaiHoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maKhoaHoc" Type="int" />
+          <Property Name="tieuDe" Type="varchar" MaxLength="100" />
+          <Property Name="noiDung" Type="text" />
+          <Property Name="thuTu" Type="int" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="maCauHoi" />
+          </Key>
+          <Property Name="maCauHoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maBaiKT" Type="int" />
+          <Property Name="cauHoi" Type="text" />
+          <Property Name="loai" Type="varchar" MaxLength="50" />
+          <Property Name="dapAn" Type="varchar" MaxLength="255" />
+          <Property Name="amThanh" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="50" />
+          <Property Name="A" Type="varchar" MaxLength="100" />
+          <Property Name="B" Type="varchar" MaxLength="100" />
+          <Property Name="C" Type="varchar" MaxLength="100" />
+          <Property Name="D" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="maBaiKT" />
+          </Key>
+          <Property Name="maBaiKT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maKhoaHoc" Type="int" />
+          <Property Name="tieuDe" Type="varchar" MaxLength="100" />
+          <Property Name="ngayTao" Type="date" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="maTaiKhoan" />
+          </Key>
+          <Property Name="maTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenTaiKhoan" Type="varchar" MaxLength="100" />
+          <Property Name="matKhau" Type="varchar" MaxLength="100" />
+          <Property Name="hoTen" Type="varchar" MaxLength="100" />
+          <Property Name="gioiTinh" Type="varchar" MaxLength="10" />
+          <Property Name="ngaySinh" Type="date" />
+          <Property Name="sdt" Type="varchar" MaxLength="15" />
+          <Property Name="trinhDo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Answer_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="maCauHoi" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="maCauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollment_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollment_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="maBaiKT" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="maBaiKT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="maBaiKT" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="maBaiKT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTiengAnhModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrollment" EntityType="Self.Enrollment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Answer_question" Association="Self.FK_Answer_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_user" Association="Self.FK_Answer_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollment_Courses" Association="Self.FK_Enrollment_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollment_user" Association="Self.FK_Enrollment_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_test" Association="Self.FK_Grade_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_user" Association="Self.FK_Grade_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Courses" Association="Self.FK_Lesson_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_test" Association="Self.FK_question_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_Courses" Association="Self.FK_test_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTiengAnhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="tenTaiKhoan" />
+          </Key>
+          <Property Name="tenTaiKhoan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="maTraLoi" />
+          </Key>
+          <Property Name="maTraLoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maCauHoi" Type="Int32" />
+          <Property Name="maTaiKhoan" Type="Int32" />
+          <Property Name="traLoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="kiemTra" Type="Boolean" />
+          <NavigationProperty Name="question" Relationship="Self.FK_Answer_question" FromRole="Answer" ToRole="question" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Answer_user" FromRole="Answer" ToRole="user" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="maKhoaHoc" />
+          </Key>
+          <Property Name="maKhoaHoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenKhoaHoc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="moTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gia" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ngayTao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Enrollment" Relationship="Self.FK_Enrollment_Courses" FromRole="Courses" ToRole="Enrollment" />
+          <NavigationProperty Name="Lesson" Relationship="Self.FK_Lesson_Courses" FromRole="Courses" ToRole="Lesson" />
+          <NavigationProperty Name="test" Relationship="Self.FK_test_Courses" FromRole="Courses" ToRole="test" />
+        </EntityType>
+        <EntityType Name="Enrollment">
+          <Key>
+            <PropertyRef Name="maGhiDanh" />
+          </Key>
+          <Property Name="maGhiDanh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maTaiKhoan" Type="Int32" />
+          <Property Name="maKhoaHoc" Type="Int32" />
+          <Property Name="ngayGhiDanh" Type="DateTime" Precision="0" />
+          <Property Name="tienDo" Type="Int32" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Enrollment_Courses" FromRole="Enrollment" ToRole="Courses" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Enrollment_user" FromRole="Enrollment" ToRole="user" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="maDiem" />
+          </Key>
+          <Property Name="maDiem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maTaiKhoan" Type="Int32" />
+          <Property Name="maBaiKT" Type="Int32" />
+          <Property Name="Diem" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="test" Relationship="Self.FK_Grade_test" FromRole="Grade" ToRole="test" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Grade_user" FromRole="Grade" ToRole="user" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="maBaiHoc" />
+          </Key>
+          <Property Name="maBaiHoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maKhoaHoc" Type="Int32" />
+          <Property Name="tieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="noiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="thuTu" Type="Int32" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Lesson_Courses" FromRole="Lesson" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="maCauHoi" />
+          </Key>
+          <Property Name="maCauHoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maBaiKT" Type="Int32" />
+          <Property Name="cauHoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="loai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dapAn" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="amThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="A" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="B" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_question" FromRole="question" ToRole="Answer" />
+          <NavigationProperty Name="test" Relationship="Self.FK_question_test" FromRole="question" ToRole="test" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="maBaiKT" />
+          </Key>
+          <Property Name="maBaiKT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maKhoaHoc" Type="Int32" />
+          <Property Name="tieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ngayTao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_test_Courses" FromRole="test" ToRole="Courses" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_Grade_test" FromRole="test" ToRole="Grade" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_test" FromRole="test" ToRole="question" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="maTaiKhoan" />
+          </Key>
+          <Property Name="maTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenTaiKhoan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="matKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="gioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+          <Property Name="sdt" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="trinhDo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_user" FromRole="user" ToRole="Answer" />
+          <NavigationProperty Name="Enrollment" Relationship="Self.FK_Enrollment_user" FromRole="user" ToRole="Enrollment" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_Grade_user" FromRole="user" ToRole="Grade" />
+        </EntityType>
+        <Association Name="FK_Answer_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="maCauHoi" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="maCauHoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollment_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="maKhoaHoc" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="maKhoaHoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollment_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="maBaiKT" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="maBaiKT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="maBaiKT" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="maBaiKT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTiengAnhEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" />
+          <EntitySet Name="Enrollment" EntityType="Self.Enrollment" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" />
+          <EntitySet Name="question" EntityType="Self.question" />
+          <EntitySet Name="test" EntityType="Self.test" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_Answer_question" Association="Self.FK_Answer_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_user" Association="Self.FK_Answer_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollment_Courses" Association="Self.FK_Enrollment_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Courses" Association="Self.FK_Lesson_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_Courses" Association="Self.FK_test_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollment_user" Association="Self.FK_Enrollment_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_test" Association="Self.FK_Grade_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_user" Association="Self.FK_Grade_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_test" Association="Self.FK_question_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTiengAnhModelStoreContainer" CdmEntityContainer="QLTiengAnhEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="tenTaiKhoan" ColumnName="tenTaiKhoan" />
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="maTraLoi" ColumnName="maTraLoi" />
+                <ScalarProperty Name="maCauHoi" ColumnName="maCauHoi" />
+                <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+                <ScalarProperty Name="traLoi" ColumnName="traLoi" />
+                <ScalarProperty Name="kiemTra" ColumnName="kiemTra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+                <ScalarProperty Name="tenKhoaHoc" ColumnName="tenKhoaHoc" />
+                <ScalarProperty Name="moTa" ColumnName="moTa" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrollment">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Enrollment">
+              <MappingFragment StoreEntitySet="Enrollment">
+                <ScalarProperty Name="maGhiDanh" ColumnName="maGhiDanh" />
+                <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+                <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+                <ScalarProperty Name="ngayGhiDanh" ColumnName="ngayGhiDanh" />
+                <ScalarProperty Name="tienDo" ColumnName="tienDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grade">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="maDiem" ColumnName="maDiem" />
+                <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+                <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesson">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="maBaiHoc" ColumnName="maBaiHoc" />
+                <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+                <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+                <ScalarProperty Name="noiDung" ColumnName="noiDung" />
+                <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="maCauHoi" ColumnName="maCauHoi" />
+                <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+                <ScalarProperty Name="cauHoi" ColumnName="cauHoi" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+                <ScalarProperty Name="dapAn" ColumnName="dapAn" />
+                <ScalarProperty Name="amThanh" ColumnName="amThanh" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="maBaiKT" ColumnName="maBaiKT" />
+                <ScalarProperty Name="maKhoaHoc" ColumnName="maKhoaHoc" />
+                <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+                <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="QLTiengAnhModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+                <ScalarProperty Name="tenTaiKhoan" ColumnName="tenTaiKhoan" />
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+                <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="trinhDo" ColumnName="trinhDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

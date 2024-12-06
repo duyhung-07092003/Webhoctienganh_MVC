@@ -1,0 +1,570 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/ielts.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=apps" />
+    <title>IELTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+<body>
+    <div class="header">
+        <div class="banner">
+            <a href="#">
+                <img src="~/img/banner_ielts.png" alt="Banner">
+            </a>
+
+        </div>
+    </div>
+    <div class="body">
+        <div class="bee_support">
+            <a href="#">
+                <img src="~/img/bee-support.svg" alt="">
+            </a>
+        </div>
+        <div class="nav">
+            <div class="nav_1">
+                <div class="nav_logo">
+                    <a href="/index.html">
+                        <img src="img/logo_ielts.png" alt="Logo">
+                    </a>
+                </div>
+                <input type="checkbox" name="" id="chkb_dd_ielts">
+                <div class="dd_ielts">
+                    <ul class="dd_list_items">
+                        <li class="dd_list_item"><a href="#">IELTS</a></li>
+                        <li class="dd_list_item"><a href="#">TOEIC</a></li>
+                        <li class="dd_list_item"><a href="#">HSK</a></li>
+                        <li class="dd_list_item"><a href="#">Preptalk English</a></li>
+                    </ul>
+                </div>
+                <div class="ctl">
+                    <label for="chkb_dd_ielts">
+                        <div class="catalog">
+                            <span class="material-symbols-outlined">apps</span>
+                            <h5>IELTS</h5>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </div>
+                    </label>
+                </div>
+                <div class="nav_list">
+                    <ul class="nav_list_items">
+                        <li class="nav_list_item"><a href="/ielts.html">Xây dựng lộ trình</a></li>
+                        <li class="nav_list_item"><a href="#">Kiểm tra đầu vào</a></li>
+                        <li class="nav_list_item"><a href="#">Luyện đề</a></li>
+
+                        <li class="nav_list_item"><a href="@Url.Action("Index", "CamKetDaura")" class="nav_link active" title="Cam kết đầu ra">Cam kết đầu ra</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="start">
+                <div class="start_study">
+                    <p><a class="study_link" style="text-decoration:none;color:white;" href="~/Studys/Index">Bắt đầu học</a></p>
+                </div>
+                <div~ class="start_login">
+
+                    <img src="~/img/user-286.svg" class="img_user" alt="">
+
+
+                    <div class="dd_user">
+                        <ul class="dd_list_users">
+                            <li class="dd_list_user dd_list_user_relative">
+                                <img src="~/img/avatar.webp" alt="">
+                                <a href="#">Trần Thị Hương</a>
+                            </li>
+                            <hr>
+                            <li class="dd_list_user"><a href="#">Trao đổi về bài chấm chữa</a></li>
+                            <li class="dd_list_user"><a href="#">Cài đặt</a></li>
+                            <hr>
+                            <li class="dd_list_user"><a href="#">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div~>
+            </div>
+        </div>
+        <div class="body_main">
+            <div class="ielts_course">
+                <div class="container_ielts_course">
+                    <div class="course"><h4>KHÓA HỌC IELTS</h4></div>
+                    <div class="heading_course">
+                        <a>Lộ trình Học & Luyện<h4>IELTS</h4> </a>
+                        <a>toàn diện</a>
+                        <h4>Phòng luyện thi IELTS ảo Prep AI - Nền tảng tự học có cam kết đầu ra.</h4>
+
+                    </div>
+                    <div class="design_course">
+                        <a href="#">Thiết kế lộ trình học</a>
+                    </div>
+                    <div class="participants">
+                        <img src="~/img/ielts_people.png" alt="">
+                        <div class="text_part">
+                            <a><h5>500.000+</h5> học viên</a>
+                            <a>Đã học IELTS tại Prep</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="spcecial_bg">
+                <img src="~/img/anh_ielts.png" alt="">
+                <img src="~/img/bee_welcome.png" alt="" id="bee_img">
+            </div>
+        </div>
+        <div class="guide">
+            <div class="hello_img">
+                <div class="hello_heading">
+                    <h3>Xin chào, Trần Thị Hương!</h3>
+                    <a>Thiết kế lộ trình học dành riêng cho bạn, ngay tại đây!</a>
+                </div>
+                <img src="~/img/ielts_glass.png" alt="">
+            </div>
+            <div class="level_aim">
+                <div class="all_level">
+                    <div class="level_text">
+                        <a>Trình độ của tôi</a>
+                        <a>Mất gốc- IELTS 3.5</a>
+                    </div>
+                    <div class="box_level">
+                        <ul class="level_items">
+
+                            <li data-position="10" class="level_item"><a>Mất gốc- 3.5 IELTS</a></li>
+                            <li data-position="295" class="level_item"><a>IELTS 4.0-4.5</a></li>
+                            <li data-position="575" class="level_item"><a>IELTS 5.0-5.5</a></li>
+                            <li data-position="859" class="level_item"><a>IELTS 6.0-6.5</a></li>
+                            <div class="box_animation_active"></div>
+                        </ul>
+                        <script>
+                            document.querySelectorAll('.level_items li').forEach((item, index) => {
+                                item.addEventListener('click', () => {
+
+                                    const leftPosition = item.getAttribute('data-position');
+                                    const box = document.querySelector('.box_animation_active');
+                                    box.style.left = `${leftPosition}px`;
+                                    document.querySelectorAll('.level_items .level_item a').forEach((link) => {
+                                        link.style.color = 'rgb(107 114 128 / var(--tw-text-opacity))';
+                                    });
+                                    const link = item.querySelector('a');
+                                    link.style.color = 'black';
+                                    if (index === 2) {
+                                        document.querySelector('.box_aim').style.display = 'none';
+                                        document.querySelector('.box_aim_2').style.display = 'block';
+                                        document.querySelector('.box_aim_3').style.display = 'none';
+                                    }
+                                    if (index == 0) {
+                                        document.querySelector('.box_aim').style.display = 'block';
+                                        document.querySelector('.box_aim_2').style.display = 'none';
+                                        document.querySelector('.box_aim_3').style.display = 'none';
+                                    }
+                                    if (index == 1) {
+                                        document.querySelector('.box_aim').style.display = 'block';
+                                        document.querySelector('.box_aim_2').style.display = 'none';
+                                        document.querySelector('.box_aim_3').style.display = 'none';
+
+                                    }
+                                    if (index == 3) {
+                                        document.querySelector('.box_aim').style.display = 'none';
+                                        document.querySelector('.box_aim_2').style.display = 'none';
+                                        document.querySelector('.box_aim_3').style.display = 'block';
+
+
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="test_level">
+                        <a>Bạn chưa rõ trình độ bản thân?</a>
+                        <a href="#">Kiểm tra đầu vào</a>
+                    </div>
+                </div>
+                <hr id="horizon_level_aim">
+                <div class="all_aim">
+                    <div class="aim_text">
+                        <a>Mục tiêu của tôi</a>
+                        <a>IELTS 6.5-7.0+</a>
+                    </div>
+                    <div class="box_aim">
+                        <ul class="aim_items">
+                            <div class="box2_animation_active"></div>
+                            <li data-left="10" class="aim_item"><a>IELTS 5.0+</a></li>
+                            <li data-left="385" class="aim_item"><a>IELTS 6.0+</a></li>
+                            <li data-left="764" class="aim_item"><a>IELTS 6.5-7.0+</a></li>
+
+                        </ul>
+                        <script>
+                            document.querySelectorAll('.aim_items li').forEach((item2) => {
+                                item2.addEventListener('click', () => {
+
+                                    const leftPosition = item2.getAttribute('data-left');
+                                    const box2 = document.querySelector('.box2_animation_active');
+                                    box2.style.left = `${leftPosition}px`;
+                                    document.querySelectorAll('.aim_items .aim_item a').forEach((link2) => {
+                                        link2.style.color = 'rgb(107 114 128 / var(--tw-text-opacity))';
+                                    });
+                                    const link2 = item2.querySelector('a');
+                                    link2.style.color = 'black';
+
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="box_aim_2" style="display: none;">
+                        <ul class="aim_items_2">
+                            <div class="box3_animation_active"></div>
+                            <li data-left1="10" class="aim_item"><a>IELTS 6.0+</a></li>
+                            <li data-left1="575" class="aim_item"><a>IELTS 6.5-7.0+</a></li>
+
+                        </ul>
+                        <script>
+                            document.querySelectorAll('.aim_items_2 li').forEach((item3) => {
+                                item3.addEventListener('click', () => {
+
+                                    const leftPosition = item3.getAttribute('data-left1');
+                                    const box3 = document.querySelector('.box3_animation_active');
+                                    box3.style.left = `${leftPosition}px`;
+                                    document.querySelectorAll('.aim_items_2 .aim_item a').forEach((link3) => {
+                                        link3.style.color = 'rgb(107 114 128 / var(--tw-text-opacity))';
+                                    });
+                                    const link3 = item3.querySelector('a');
+                                    link3.style.color = 'black';
+
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="box_aim_3" style="display: none;">
+                        <ul class="aim_items_3">
+                            <div class="box4_animation_active"></div>
+                            <li data-left1="10" class="aim_item"><a>IELTS 6.5-7.0+</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pack">
+                <ul class="text_pack">
+                    <li>Chọn gói phù hợp</li>
+                    <li>Chinh phục lộ trình Mất gốc đến 6.5+</li>
+                </ul>
+                <div class="active_selfstudy">
+                    <div class="active_container">
+                        <div class="icon">
+                            <i class="fa-solid fa-star" style="color: #007bff;"></i>
+                            <a>Tự học chủ động</a>
+                        </div>
+                        <div class="price_reduced">
+                            <a>9.000.000</a>
+                            <a>VND</a>
+
+                        </div>
+                        <div class="price_no_reduced">
+                            <a>12.000.000 VND</a>
+                            <a>-25%</a>
+                        </div>
+                        <div class="coupon_box">
+                            <input type="search" name="" id="coupon_click" placeholder="Nhập mã Coupon">
+                            <button><a href="#">Áp dụng</a></button>
+
+                        </div>
+                        <a href="#" id="link_res_as">
+                            <div class="register">Đăng ký học ngay</div>
+                        </a>
+                        <div class="benefits">
+                            <ul class="bens_list_items">
+                                <li class="bens_list_item">
+                                    <a>Quyền lợi:</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Học & tương tác chủ động với video bài giảng</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Làm bài tập liên tục, không giới hạn
+                                    </a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Được chấm chữa sát sao Speaking & Writing với giáo viên IELTS 8.0+
+                                    </a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Học & Luyện đề theo kế hoạch học tập được cá nhân hóa</a>
+                                </li>
+                                <li class="bens_list_item bens_blur">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Luyện Speaking Ảo hàng ngày với bộ đề Dự Đoán, đề Thi mới nhất</a>
+                                </li>
+                                <li class="bens_list_item bens_blur">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Luyện Writing Ảo hàng ngày với bộ đề Độc Quyền, đề Thi Thật mới nhất
+                                    </a>
+                                </li>
+                                <li class="bens_list_item bens_blur">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Sử dụng kho ý tưởng, bài mẫu hay, gồm các bài từ cựu giám khảo IELTS</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="gifts">
+                            <ul class="gifts_list_items">
+                                <li class="gifts_list_item">
+                                    <a>Qùa tặng kèm:</a>
+                                </li>
+                                <li class="gifts_list_item">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <a>Lật tẩy IELTS 7 (Trị giá 1.000.000 VND)</a>
+                                </li>
+                                <li class="gifts_list_item">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <a>Bộ 12 đề thi thật IELTS Reading - Listening (kèm giải thích đáp án) (Trị giá 2.000.000 VND)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="study_comprehensive">
+                    <div class="comprehensive_container">
+                        <div class="icon">
+                            <i class="fa-solid fa-crown" style="color: white;"></i>
+                            <a>Học và luyện đề toàn diện</a>
+                        </div>
+                        <div class="price_reduced">
+                            <a>12.000.000</a>
+                            <a>VND</a>
+
+                        </div>
+                        <div class="price_no_reduced">
+                            <a>16.000.000 VND</a>
+                            <a>-25%</a>
+                        </div>
+                        <div class="coupon_box">
+                            <input type="search" name="" id="" placeholder="Nhập mã Coupon">
+                            <button><a href="#">Áp dụng</a></button>
+
+                        </div>
+                        <a href="#" id="link_res_as">
+                            <div class="register resgister_study_comprehensive">Đăng ký học ngay</div>
+                        </a>
+                        <div class="benefits">
+                            <ul class="bens_list_items">
+                                <li class="bens_list_item">
+                                    <a>Quyền lợi:</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Học & tương tác chủ động với video bài giảng</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Làm bài tập liên tục, không giới hạn
+                                    </a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Được chấm chữa sát sao Speaking & Writing với giáo viên IELTS 8.0+
+                                    </a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Học & Luyện đề theo kế hoạch học tập được cá nhân hóa</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Luyện Speaking Ảo hàng ngày với bộ đề Dự Đoán, đề Thi mới nhất</a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>
+                                        Luyện Writing Ảo hàng ngày với bộ đề Độc Quyền, đề Thi Thật mới nhất
+                                    </a>
+                                </li>
+                                <li class="bens_list_item">
+                                    <i class="fa-solid fa-check"></i>
+                                    <a>Sử dụng kho ý tưởng, bài mẫu hay, gồm các bài từ cựu giám khảo IELTS</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="gifts">
+                            <ul class="gifts_list_items">
+                                <li class="gifts_list_item">
+                                    <a>Qùa tặng kèm:</a>
+                                </li>
+                                <li class="gifts_list_item">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <a>Lật tẩy IELTS 7 (Trị giá 1.000.000 VND)</a>
+                                </li>
+                                <li class="gifts_list_item">
+                                    <i class="fa-solid fa-gift"></i>
+                                    <a>Bộ 12 đề thi thật IELTS Reading - Listening (kèm giải thích đáp án) (Trị giá 2.000.000 VND)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_section">
+            <img src="/img/logo_footer.svg" alt="Logo Prep">
+            <h3>CÔNG TY CỔ PHẦN CÔNG NGHỆ PREP</h3>
+            <p><strong>Mã số doanh nghiệp: </strong>0109817671</p>
+            <p>
+                <strong>Địa chỉ: </strong>Số nhà 20 Ngách 234/35 Đường Hoàng Quốc Việt, Phường Cổ Nhuế 1, Quận Bắc Từ
+                Liêm, Thành phố Hà Nội, Việt Nam
+            </p>
+            <p><strong>Trụ sở văn phòng: </strong>NO.21-C2 KĐT Nam Trung Yên, P.Trung Hoà, Q.Cầu Giấy, Tp. Hà Nội</p>
+        </div>
+
+        <div class="footer_section footer_section-info">
+            <h3>VỀ PREP</h3>
+            <ul>
+                <li><a href="">Giới thiệu</a></li>
+                <li><a href="">Tuyển dụng</a></li>
+            </ul>
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <div class="social_icons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="footer_section footer_section-info">
+            <h3>THÔNG TIN</h3>
+            <ul>
+                <li><a href="">Điều kiện và điều khoản giao dịch</a></li>
+                <li><a href="">Chính sách thanh toán</a></li>
+                <li><a href="">Chính sách bảo mật thông tin</a></li>
+                <li><a href="">Cam kết đầu ra IELTS</a></li>
+                <li><a href="">Cam kết đầu ra TOEIC</a></li>
+                <li><a href="">Chính sách sử dụng AI</a></li>
+            </ul>
+        </div>
+
+        <div class="footer_section">
+            <h3>TẢI ỨNG DỤNG TRÊN ĐIỆN THOẠI</h3>
+            <a href=""><img src="/img/google_play.png" alt="Google Play"></a>
+            <a href=""><img src="/img/app_store.png" alt="App Store"></a>
+        </div>
+    </div>
+
+    <div class="footer_bottom">
+        <h3>TRUNG TÂM ĐÀO TẠO NGOẠI NGỮ PREP</h3>
+        <p><strong>Phòng luyện ảo - Trải nghiệm thực tế - Công nghệ hàng đầu</strong></p>
+        <p><strong>Hotline:</strong> 0931 42 8899</p>
+        <p>
+            <strong>Địa chỉ: </strong>Địa chỉ: Số nhà 20, ngách 234/35 đường Hoàng Quốc Việt, phường Cổ Nhuế 1, quận Bắc
+            Từ Liêm, TP Hà Nội
+        </p>
+        <p>
+            Giấy chứng nhận hoạt động đào tạo, bồi dưỡng số 1309/QĐ-SGDĐT ngày 31 tháng 07 năm 2023 do Sở Giáo dục và Đào
+            tạo Hà Nội cấp
+        </p>
+        <div class="certificates">
+            <img src="/img/license_bct.svg" alt="Bộ Công Thương">
+            <img src="/img/license_sectigo.svg" alt="Sectigo">
+            <img src="/img/license_dcma.svg" alt="DMCA">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        document.getElementById('link_res_as').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Cấu hình thông tin giao dịch
+            const vnp_TmnCode = "TWFZWGZY"; // Mã website
+            const vnp_HashSecret = "PFBMJQYPJEDBFUJQRUBSRVPMVWUGRIPA"; // Chuỗi bí mật
+            const vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL môi trường test
+            const vnp_ReturnUrl = "http://localhost:44325/trangchu/index/"; // URL nhận kết quả
+
+            // Phiên bản API
+            const vnp_Version = "2.1.0"; // Phiên bản API
+
+            // Thông tin giao dịch
+            const vnp_Amount = (1000000 * 100).toString(); // 1,000,000 VNĐ -> 100,000,000 đồng
+            const vnp_OrderInfo = "Thanh toán khóa học";
+            const vnp_OrderType = "other"; // Mã danh mục hàng hóa
+            const vnp_CurrCode = "VND"; // Đơn vị tiền tệ
+            const vnp_Locale = "vn"; // Ngôn ngữ hiển thị
+            const vnp_TxnRef = Math.floor(Math.random() * 1000000); // Mã giao dịch ngẫu nhiên
+            const vnp_BankCode = ""; // Mã ngân hàng, nếu có
+
+            // Lấy thời gian hiện tại (yyyyMMddHHmmss)
+            const now = new Date();
+            const vnp_CreateDate = now.getFullYear() +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') +
+                String(now.getHours()).padStart(2, '0') +
+                String(now.getMinutes()).padStart(2, '0') +
+                String(now.getSeconds()).padStart(2, '0'); // yyyyMMddHHmmss
+
+            // Địa chỉ IP của khách hàng (cần thay bằng IP thực tế)
+            const vnp_IpAddr = "127.0.0.1";
+
+            // Thời gian hết hạn thanh toán
+            const vnp_ExpireDate = new Date(now.getTime() + 15 * 60000); // 15 phút sau
+            const vnp_ExpireDateStr = vnp_ExpireDate.getFullYear() +
+                String(vnp_ExpireDate.getMonth() + 1).padStart(2, '0') +
+                String(vnp_ExpireDate.getDate()).padStart(2, '0') +
+                String(vnp_ExpireDate.getHours()).padStart(2, '0') +
+                String(vnp_ExpireDate.getMinutes()).padStart(2, '0') +
+                String(vnp_ExpireDate.getSeconds()).padStart(2, '0'); // yyyyMMddHHmmss
+
+            // Tạo chuỗi dữ liệu trước khi mã hóa
+            const params = {
+                vnp_Version,
+                vnp_Command: "pay",
+                vnp_TmnCode,
+                vnp_Amount,
+                vnp_BankCode,
+                vnp_CreateDate,
+                vnp_CurrCode,
+                vnp_IpAddr,
+                vnp_Locale,
+                vnp_OrderInfo,
+                vnp_OrderType,
+                vnp_ReturnUrl,
+                vnp_ExpireDate: vnp_ExpireDateStr,
+                vnp_TxnRef,
+            };
+
+            // Sắp xếp tham số theo thứ tự a-z
+            const sortedParams = Object.keys(params).sort().reduce((acc, key) => {
+                acc[key] = params[key];
+                return acc;
+            }, {});
+
+            // Tạo chuỗi query từ các tham số đã sắp xếp
+            const query = new URLSearchParams(sortedParams).toString();
+
+            // Tạo chuỗi mã hóa HMAC-SHA512
+            const hash = CryptoJS.HmacSHA512(query, vnp_HashSecret).toString();
+
+            // Chuyển hướng sang VNPAY với tham số mã hóa (checksum)
+            const finalUrl = `${vnp_Url}?${query}&vnp_SecureHash=${hash}`;
+            console.log("Redirecting to: ", finalUrl); // Debug URL cuối cùng
+            window.location.href = finalUrl; // Chuyển hướng đến URL thanh toán
+        });
+        </script>
+</body>
+</html>
